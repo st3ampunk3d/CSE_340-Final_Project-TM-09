@@ -19,7 +19,7 @@ app
     .use('/', require('./routes'));
 
 app.get('/', (req, res) => {
-    res.send(req.session.user !== undefined ? `${message}<span style="color:green;">Logged in as ${req.session.user.userName}</span>` : `${message}<span style="color:red;">Logged Out</span>`)
+    res.send(`${message}`)
 })
 
 data.initDb((err, data) => {
