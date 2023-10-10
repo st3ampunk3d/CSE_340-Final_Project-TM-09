@@ -1,0 +1,12 @@
+.env
+
+controllers
+db/passport
+middleware
+models
+routes
+swagger.json
+
+node_modules
+models/seed.json
+swagger-autogen.js
