@@ -5,7 +5,7 @@ const data = require('./db/connect')
 
 
 const port = process.env.port || 8080
-const message = 'Joshua Beale | CSE 341 - Week 4 | Project 2 (Pt 2)<br/><br/>'
+const message = 'Team 09 | CSE 341 - Week 5 | Final Project<br/><br/>'
 
 app
 
