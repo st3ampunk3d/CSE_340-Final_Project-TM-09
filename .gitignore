@@ -1,7 +1,7 @@
 .env
 
 controllers
-db/passport
+db/passport.js
 middleware
 models
 routes
