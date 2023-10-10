@@ -4,7 +4,10 @@ controllers
 db/passport.js
 middleware
 models
-routes
+routes/auth.js
+routes/dogs.js
+routes/owners.js
+routes/swagger.js
 swagger.json
 
 node_modules
