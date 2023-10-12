@@ -1,15 +1,4 @@
 .env
-
-controllers
-db/passport.js
-middleware
-models
-routes/auth.js
-routes/dogs.js
-routes/owners.js
-routes/swagger.js
-swagger.json
-
 node_modules
 models/seed.json
 swagger-autogen.js

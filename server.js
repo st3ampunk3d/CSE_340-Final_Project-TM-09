@@ -1,27 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session')
+const passport = require('passport')
+const data = require('./config/connect')
+
+
 const app = express()
-const data = require('./db/connect')
+const port = process.env.PORT || 8080
 
+const message = 'Joshua Beale | CSE 341 - Week 4 | Project 2 (Pt 2)<br/><br/>'
 
-const port = process.env.port || 8080
-const message = 'Team 09 | CSE 341 - Week 5 | Final Project<br/><br/>'
-
-app
-
-    .use((req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', '*')
-        res.setHeader('Access-Control-Allow-Headers', 'origin, X-Requested-With, Content-Type, Accept, Z-Key')
-        res.setHeader('Access-Control-Allow-Mehtods', 'GET, POST, PUT, DELETE, OPTIONS')
-        next()
-    })
-
-    .use('/', require('./routes'));
-
-app.get('/', (req, res) => {
-    res.send(`${message}`)
-})
-
+// Config
 data.initDb((err, data) => {
     if (err) {
         console.log(err);
@@ -32,6 +21,21 @@ data.initDb((err, data) => {
     }
 })
 
+require('./config/passport')(passport)
 
+app
+    //Sessions
+    .use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false
+        //cookie: { secure: true }
+    }))
 
+    // Passport middleware
+    .use(passport.initialize())
+    .use(passport.session())
 
+    //routes
+    .use('/', require('./routes'))
+    .use('/auth', require('./routes/auth'))
