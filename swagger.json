@@ -1,0 +1,246 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "CSE 341 - Final Project - Team 09",
+      "version": "1.0.0",
+      "title": "Kennel Club Api"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "paths": {
+    "/members": {
+        "get": {
+          "tags": ["Members"],
+          "description": "Returns all registered members",
+          "responses": {"200": {"description": "OK"}}
+        },
+        "post": {
+            "tags": ["Members"],
+            "description": "Register A new member.",
+            "parameters": [{
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {"example": "Joshua"},
+                        "lastName": {"example": "Beale"},
+                        "joinedDate": {"example": "10-14-2023"},
+                        "city": {"example": "Hyrum"},
+                        "phone": {"example": "123-456-7890"},
+                        "email": {"example": "joshua.beale@email.com"},
+                        "dogs": {"example": ["Nova", "August"]}
+            }}}],
+            "produces": ["applciation/json"],
+            "responses": {"201": {"description": "Record Created"},
+                          "500": {"description": "Internal Server Error"}
+        }}
+      },
+    "/members/findByName" : {
+        "get": {
+            "tags": ["Members"],
+            "description": "Returns members with matching name",
+            "responses": {"200": {"desscription": "OK"}}
+        }
+      },
+    "/members/findByDog" : {
+        "get": {
+            "tags": ["Members"],
+            "description": "Returns members who own a dog with matching name",
+            "responses": {"200": {"desscription": "OK"}}
+        }
+      },
+    "/members/{memberId}" : {
+        "get": {
+            "tags": ["Members"],
+            "description": "Returns member with matching ID",
+            "responses": {"200": {"desscription": "OK"}}
+        },
+        "put": {
+            "tags": ["Members"],
+            "description": "Update a member.",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"},{
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {"example": "Melody"},
+                        "lastName": {"example": "Curran"},
+                        "joinedDate": {"example": "10-14-2023"},
+                        "city": {"example": "Provo"},
+                        "phone": {"example": "123-456-7890"},
+                        "email": {"example": "melody.curran@email.com"},
+                        "dogs": {"example": ["Spike"]}
+            }}}],
+            "responses": {"204": {"description": "Record Updated"},
+                          "404": {"description": "Member Not Found"},
+                          "500": {"description": "Internal Server Error"}
+        }},
+        "delete": {
+            "tags": ["Members"],
+            "description": "Delete a member",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+        }],
+            "responses": {"204": {"description": "Record Deleted"},
+                          "404": {"description": "Member Not Found"},
+                          "500": {"description": "Internal Server Error"}
+    }}},
+    "/breeds": {
+        "get": {
+          "tags": ["breeds"],
+          "description": "Returns a list of accepted breeds.",
+          "responses": {"200": {"description": "OK"}}
+        },
+        "post": {
+            "tags": ["breeds"],
+            "description": "Add a new breed.",
+            "parameters": [{
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"example": "Labrador"},
+                        "size": {"example": "meduim"},
+                        "energy": {"example": "high"}
+            }}}],
+            "produces": ["applciation/json"],
+            "responses": {"201": {"description": "Record Created"},
+                          "500": {"description": "Internal Server Error"}
+        }}
+      },
+    "/breeds/{breedId}" : {
+        "get": {
+            "tags": ["breeds"],
+            "description": "Returns breed with matching ID",
+            "responses": {"200": {"desscription": "OK"}}
+        },
+        "put": {
+            "tags": ["breeds"],
+            "description": "Update a breed.",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"},{
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"example": "Corgi"},
+                        "size": {"example": "small"},
+                        "energy": {"example": "medium"}
+            }}}],
+            "responses": {"204": {"description": "Record Updated"},
+                          "404": {"description": "Breed Not Found"},
+                          "500": {"description": "Internal Server Error"}
+        }},
+        "delete": {
+            "tags": ["breeds"],
+            "description": "Remove a breed.",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+        }],
+            "responses": {"204": {"description": "Record Deleted"},
+                          "404": {"description": "Breed Not Found"},
+                          "500": {"description": "Internal Server Error"}
+    }}},
+    "/dogs": {
+        "get": {
+          "tags": ["dogs"],
+          "description": "Returns all registered dogs",
+          "responses": {"200": {"description": "OK"}}
+        },
+        "post": {
+            "tags": ["dogs"],
+            "description": "Register A new dog.",
+            "parameters": [{
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"example": "Nova"},
+                        "breed": {"example": "Labrador"},
+                        "birthday": {"example": "05-14-2023"}
+            }}}],
+            "produces": ["applciation/json"],
+            "responses": {"201": {"description": "Record Created"},
+                          "500": {"description": "Internal Server Error"}
+        }}
+      },
+    "/dogs/findByName" : {
+        "get": {
+            "tags": ["dogs"],
+            "description": "Returns dogs with matching name",
+            "responses": {"200": {"description": "OK"}}
+        }
+      },
+      "/dogs/findByBreed" : {
+        "get": {
+            "tags": ["dogs"],
+            "description": "Returns dogs with matching breed",
+            "responses": {"200": {"description": "OK"}}
+        }
+      },
+    "/dogs/{dogId}" : {
+        "get": {
+            "tags": ["dogs"],
+            "description": "Returns dog with matching ID",
+            "responses": {"200": {"description": "OK"}}
+        },
+        "put": {
+            "tags": ["dogs"],
+            "description": "Update a dog.",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"},{
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"example": "August"},
+                        "breed": {"example": "Corgi"},
+                        "birthday": {"example": "09-14-2023"}
+            }}}],
+            "responses": {"204": {"description": "Record Updated"},
+                          "404": {"description": "Dog Not Found"},
+                          "500": {"description": "Internal Server Error"}
+        }},
+        "delete": {
+            "tags": ["dogs"],
+            "description": "Delete a dog",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+        }],
+            "responses": {"204": {"description": "Record Deleted"},
+                          "404": {"description": "dog Not Found"},
+                          "500": {"description": "Internal Server Error"}
+    }}} 
+}}
+
+
+

@@ -1,29 +1,30 @@
-const Owner = require('../models/owner')
+const Member = require('../models/Member')
 
 const opts = { runValidators: true }
 
 const getAll = async (req, res) => {
-    //#swagger.tags=['Owners']
-    const result = await Owner.find()
+    //#swagger.tags=['Members']
+    const result = await Member.find()
     res.setHeader('Content-Type', 'application/json')
     res.status(200).json(result)
 }
 
 const getSingle = async (req, res) => {
-    //#swagger.tags=['Owners']
-    const result = await Owner.findById(req.params.id)
+    //#swagger.tags=['Members']
+    const result = await Member.findById(req.params.id)
 
     res.setHeader('Content-Type', 'application/json')
     if (!result)  {
-        res.status(418).send('Owner does not exist!')
+        res.status(418).send('Member does not exist!')
     } else {
         res.status(200).send(result)
     }
 }
 
-const createOwner = async (req, res) => {
-    //#swagger.tags=['Owners']
-    const result = new Owner(req.body)
+const createMember = async (req, res) => {
+    //#swagger.tags=['Members']
+    console.log(req.body)
+    const result = new Member(req.body)
 
     try {
         await result.save()
@@ -35,13 +36,13 @@ const createOwner = async (req, res) => {
     }
 }
 
-const updateOwner = async (req, res) => {
-    //#swagger.tags=['Owners']
+const updateMember = async (req, res) => {
+    //#swagger.tags=['Members']
     try {
-        result = await Owner.findByIdAndUpdate(req.params.id, req.body, opts)
+        result = await Member.findByIdAndUpdate(req.params.id, req.body, opts)
         res.setHeader('Content-Type', 'application/json')
         if (!result) {
-            res.status(418).send('Owner does not exist!')
+            res.status(418).send('Member does not exist!')
         } else {
             await result.save()
             res.status(204).send()
@@ -53,13 +54,13 @@ const updateOwner = async (req, res) => {
     }
 }
 
-const deleteOwner = async (req, res) => {
-    //#swagger.tags=['Owners']
+const deleteMember = async (req, res) => {
+    //#swagger.tags=['Members']
     try {
-        const result = await Owner.findByIdAndDelete(req.params.id)
+        const result = await Member.findByIdAndDelete(req.params.id)
         res.setHeader('Content-Type', 'application/json')
         if (!result) {
-            res.status(418).send('Owner does not exist!')
+            res.status(418).send('Member does not exist!')
         } else {
             res.status(204).send()
         }
@@ -71,7 +72,7 @@ const deleteOwner = async (req, res) => {
 module.exports = {
     getAll,
     getSingle,
-    createOwner,
-    updateOwner,
-    deleteOwner
+    createMember,
+    updateMember,
+    deleteMember
 }
