@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const swaggerUI = require('swagger-ui-express');
+const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
 
 //@desc     Swagger API Documentation
