@@ -24,6 +24,18 @@ data.initDb((err, data) => {
 require('./config/passport')(passport)
 
 app
+    //To make sure the route will work across sites
+    .use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept, Z-key'
+        );
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        next();
+    })
+
+
     //Sessions
     .use(session({
         secret: process.env.SESSION_SECRET,
