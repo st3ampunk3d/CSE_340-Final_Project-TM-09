@@ -5,7 +5,7 @@
       "version": "1.0.0",
       "title": "Kennel Club Api"
     },
-    "host": "localhost:8080",
+    "host": "kennel-club.onrender.com",
     "basePath": "/",
     "schemes": [
       "https",

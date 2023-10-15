@@ -23,7 +23,6 @@ const getSingle = async (req, res) => {
 
 const createMember = async (req, res) => {
     //#swagger.tags=['Members']
-    console.log(req.body)
     const result = new Member(req.body)
 
     try {
