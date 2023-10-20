@@ -12,6 +12,18 @@ const port = process.env.PORT || 8080
 require('./config/passport')(passport)
 
 app
+    //To make sure the route will work across sites
+    .use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept, Z-key'
+        );
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        next();
+    })
+
+
     //Sessions
     .use(bodyParser.json())
     .use(session({
@@ -29,6 +41,7 @@ app
     .use('/', require('./routes'))
     .use('/auth', require('./routes/auth'))
 
+
 data.initDb((err, data) => {
     if (err) {
         console.log(err);
@@ -38,3 +51,4 @@ data.initDb((err, data) => {
         })
     }
 })
+

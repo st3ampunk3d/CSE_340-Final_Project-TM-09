@@ -2,6 +2,7 @@ const router = require('express').Router()
 
 const message = 'Kennel Club | CSE 341 - Week 5 | Final Project<br/><br/>Joshua Beale<br/>Melody Curran<br/><br/>'
  
+router.use('/', require('./swagger'));
 //@desc     Landing page
 //@rout     GET /
 router.get('/', (req, res) => {
