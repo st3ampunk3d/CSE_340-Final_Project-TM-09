@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const BreedSchema = new mongoose.Schema({
     name: {
@@ -12,7 +12,7 @@ const BreedSchema = new mongoose.Schema({
     },
     energy: {
         type: String,
-        enum: ['low, moderate, high'],
+        enum: ['low', 'moderate', 'high'],
         required: true
     }
 },
@@ -20,6 +20,6 @@ const BreedSchema = new mongoose.Schema({
 {
     collection: 'breeds',
     versionKey: false
-})
+});
 
-module.exports = mongoose.model('Breed', BreedSchema)
+module.exports = mongoose.model('Breed', BreedSchema);

@@ -1,6 +1,6 @@
 const Member = require('../models/Member')
 
-const opts = { runValidators: true }
+// const opts = { runValidators: true }
 
 const getAll = async (req, res) => {
     //#swagger.tags=['Members']

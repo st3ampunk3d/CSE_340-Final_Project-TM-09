@@ -33,7 +33,7 @@ app
         //cookie: { secure: true }
     }))
 
-    // Passport middleware
+    //Passport middleware
     .use(passport.initialize())
     .use(passport.session())
 
