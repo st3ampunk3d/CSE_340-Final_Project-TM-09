@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('../middleware/validator')
+// const validator = require('../middleware/validator')
 
 const MemberSchema = new mongoose.Schema({
     firstName: {
@@ -13,7 +13,7 @@ const MemberSchema = new mongoose.Schema({
     joinedDate: {
         type: Date,
         required: true,
-        validate: [validator.validateDate, 'Member joined date cannot be in the future.']
+        // validate: [validator.validateDate, 'Member joined date cannot be in the future.']
     },
     city: {
         type: String,
@@ -21,11 +21,11 @@ const MemberSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        validate: [validator.validatePhone, 'Phone number is invalid.']
+        // validate: [validator.validatePhone, 'Phone number is invalid.']
     },
     email: {
         type: String,
-        validate: [validator.validateEmail, 'Email address is invalid']
+        // validate: [validator.validateEmail, 'Email address is invalid']
     },
     dogs: {
         type: Array

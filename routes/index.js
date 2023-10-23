@@ -14,5 +14,9 @@ router.get('/', (req, res) => {
 router.use('/', require('./swagger'))
 
 router.use('/members', require('./members'))
+router.use('/breeds', require('./breeds'));
+router.use('/events', require('./events'));
+router.use('/dogs', require('./dogs'));
+router.use('/users', require('./users'));
 
 module.exports = router
