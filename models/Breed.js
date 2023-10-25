@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('../middleware/validator')
 
 const BreedSchema = new mongoose.Schema({
     name: {

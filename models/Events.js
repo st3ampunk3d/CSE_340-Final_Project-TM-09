@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('../middleware/validator')
 
 const EventSchema = new mongoose.Schema({
     title: {
@@ -11,7 +12,8 @@ const EventSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true
+        required: true,
+        validate: [validator.futureDate, 'Event date must be in the future.']
     },
     location: {
         type: String,

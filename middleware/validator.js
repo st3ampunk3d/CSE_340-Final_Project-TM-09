@@ -14,10 +14,16 @@ const validateEmail = (email) => {
     return re.test(email)
 }
 
-const validateDate = (date) => {
+const pastDate = (date) => {
     today = new Date()
     input = new Date(date)
     return input <= today
+}
+
+const futureDate = (date) => {
+    today = new Date()
+    input = new Date(date)
+    return input >= today
 }
 
 const validatePhone = (phone) => {
@@ -28,6 +34,7 @@ const validatePhone = (phone) => {
 module.exports = {
     knownBreed,
     validateEmail,
-    validateDate,
+    pastDate,
+    futureDate,
     validatePhone
 }

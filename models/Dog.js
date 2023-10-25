@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-// const validator = require('../middleware/validator')
+const validator = require('../middleware/validator')
 
 const DogSchema = new mongoose.Schema({
     name: {
@@ -9,12 +9,12 @@ const DogSchema = new mongoose.Schema({
     breed: {
         type: String,
         required: true,
-        // validate: [validator.knownBreed, 'This Breed is not recognized by the Kennel Club.']
+        validate: [validator.knownBreed, 'This Breed is not recognized by the Kennel Club.']
     },
     birthday: {
         type: Date,
         required: true,
-        // validate: [validator.validateDate, 'Birthday must be before the current date.']
+        validate: [validator.pastDate, 'Birthday must be before the current date.']
     }
 },
 

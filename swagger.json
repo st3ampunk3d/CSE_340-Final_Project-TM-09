@@ -8,7 +8,7 @@
   "host": "kennel-club.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https"
+    "https", "http"
   ],
   "paths": {
     
