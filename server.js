@@ -52,3 +52,4 @@ data.initDb((err, data) => {
     }
 })
 
+module.exports = app

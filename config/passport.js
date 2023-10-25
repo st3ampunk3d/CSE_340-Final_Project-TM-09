@@ -1,9 +1,10 @@
-const authStrategy = require('passport-google-oauth20').Strategy
+const googleStrategy = require('passport-google-oauth20').Strategy
 const User = require('../models/User')
 
 
 module.exports = (passport) => {
-    passport.use(new authStrategy({
+    
+    passport.use(new googleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: process.env.CALLBACK_URL

@@ -2,3 +2,5 @@
 node_modules
 models/seed.json
 swagger-autogen.js
+coverage
+.vscode
