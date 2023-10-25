@@ -4,3 +4,4 @@ models/seed.json
 swagger-autogen.js
 coverage
 .vscode
+package-lock.json
